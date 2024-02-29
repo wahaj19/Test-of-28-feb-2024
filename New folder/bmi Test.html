@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Body Mass Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1> Body Mass Index </h1>
+
+    <div class="container">
+
+        <div class="mb-3">
+            <label for="weight" class="form-label"> Weight KG</label>
+            <input type="number" class="form-control" placeholder="weight in kg "  id="weight" area-describedby="email help">
+        </div>
+
+        <div class="mb-4">
+            <label for="height" class="form-label"> Height Feet </label>
+            <input type="number" class="form-control" id="height">
+        </div>
+
+        <div class="mb-3">
+            <label for="heightinches" class="form-label"> Height inches </label>
+            <input type="number" class="form-label" id="heightinches">
+        </div>
+        <button type="submit" online="bmi()" class="btn btn-primary"> submit </button>
+
+        <div class="mb-3">
+            <label for="ans" class="form-label"> Result </label>
+            <input type="number" readonly class="form-control" id="ans">
+        </div>
+        <p id="res">
+
+        </p>
+    </div>
+    <script>
+        function bmi() {
+            var weight = parseInt(document.getElementById("weight").value)
+            var feet = parseInt(document.getElementById("height").value)
+            var inches = parseInt(document.getElementById("heightinches").value)
+
+            var totalinches = (feet * 12) + inches;
+            var totalcms = totalinches * 2.54;
+            var totalmeters = totalcms / 100;
+            var bmi = weight / (totalmeters * totalmeters) 
+            
+            res = "enter all fields"
+
+            if (bmi < 20) {
+                document.getElementById("res").style.backgroundColor = "Green"
+                res = "underweight ap kamzor hain"
+
+            } else if (bmi > 30) {
+                document.getElementById("res").style.backgroundColor = "White"
+                res = "overweight ap boht moty hogaye hain"
+
+            } else {
+
+                document.getElementById("res").style.backgroundColor = "orange"
+                res = "You are healthy mashaALlah"
+
+            }
+
+
+
+            document.getElementById("ans").value = bmi.toFixed(2)
+            document.getElementById("res").innerHTML = res
+
+
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
